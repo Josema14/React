@@ -1,32 +1,20 @@
 import React, {useState} from 'react';
-import './RegistrationForm.css'
-export default function RegistrationForm(props){
+import './LoginForm.css'
+export default function LoginForm(props){
 
     //Estados 
     const [state, setState] = useState({
         email : "",
         password : "",
-        confirmPassword : "",
-   
     })
 
     const handleSubmitClick = (e) => {
         e.preventDefault();
-        if(state.password === state.confirmPassword){
-           console.log(state)
-           //Añadir a MongoDB
-            sendDetailsToServer()
+        //Comprobar que la contraseña es correcta y el usuario está en la BD
+       
 
         }
-    else {
 
-            //Modificar para mostrar un mensaje de error
-            alert("Las contraseñas no coinciden")
-        }    
-        
-            
-
-    }
 
     const sendDetailsToServer = () => {
 
@@ -46,7 +34,7 @@ export default function RegistrationForm(props){
 
 <div className="card">
     <div className='title'>
-        <h3>Registro de usuario</h3>
+        <h3>Inicio de sesión</h3>
     </div>
 
         <hr/>
@@ -81,29 +69,15 @@ export default function RegistrationForm(props){
             />
         </div>  
 
-            {/*Confirmar contraseña*/}
-            <div  className='inputs'>
-            <label>Confirmar contraseña</label>
-            <input type="password"
-                id = "confirmPassword"
-                    value = {state.confirmPassword}
-                   onChange = {handleChange}
-                   className='input-box'
-                   placeholder='Escriba su contraseña de nuevo'
-            />
-        </div>
-
-        <p value = {state.errorMessage} style={{color : "red"}}></p>
-
         <div className='btn-group'>
         <button 
                 type="submit" 
                     className="btn btn-grad"
                     onClick={handleSubmitClick}
                 >
-                    Registrarse
+                    Confirmar
                 </button>
-        <span className="login-link">Ya estoy registrado, <a href="Login">quiero iniciar sesión</a></span>
+        <span className="login-link">No estoy registrado, <a href="Register">quiero registrarme</a></span>
                 </div>
 
 
@@ -114,7 +88,6 @@ export default function RegistrationForm(props){
     </div>
     </div>
     )
-
 }
 
 
